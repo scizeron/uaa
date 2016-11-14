@@ -199,25 +199,25 @@ public class OIDCLoginIT {
         Assert.assertEquals("Application Authorization", webDriver.findElement(By.cssSelector("h1")).getText());
     }
 
-    @Test
-    public void successful_Azure_Login() throws Exception {
-        String userName = "jondoe@cfuaa.onmicrosoft.com";
-        String password = "Cona41591";
-        IdentityProvider<OIDCIdentityProviderDefinition> azure = createAzureProvider();
-        webDriver.get(appUrl);
-
-        webDriver.findElement(By.linkText("Test Azure Provider")).click();
-        String url = "login.microsoftonline.com/9bc40aaf-e150-4c30-bb3c-a8b3b677266e/oauth2/authorize";
-        Assert.assertThat(webDriver.getCurrentUrl(), Matchers.containsString(url));
-
-        webDriver.findElement(By.name("login")).sendKeys(userName);
-        webDriver.findElement(By.name("passwd")).sendKeys(password);
-        webDriver.findElement(By.name("passwd")).submit();
-        //webDriver.findElement(By.id("credentials")).submit();
-
-        Thread.sleep(500);
-        Assert.assertEquals("Application Authorization", webDriver.findElement(By.cssSelector("h1")).getText());
-    }
+//    @Test
+//    public void successful_Azure_Login() throws Exception {
+//        String userName = "jondoe@cfuaa.onmicrosoft.com";
+//        String password = "Cona41591";
+//        IdentityProvider<OIDCIdentityProviderDefinition> azure = createAzureProvider();
+//        webDriver.get(appUrl);
+//
+//        webDriver.findElement(By.linkText("Test Azure Provider")).click();
+//        String url = "login.microsoftonline.com/9bc40aaf-e150-4c30-bb3c-a8b3b677266e/oauth2/authorize";
+//        Assert.assertThat(webDriver.getCurrentUrl(), Matchers.containsString(url));
+//
+//        webDriver.findElement(By.name("login")).sendKeys(userName);
+//        webDriver.findElement(By.name("passwd")).sendKeys(password);
+//        webDriver.findElement(By.name("passwd")).submit();
+//        //webDriver.findElement(By.id("credentials")).submit();
+//
+//        Thread.sleep(500);
+//        Assert.assertEquals("Application Authorization", webDriver.findElement(By.cssSelector("h1")).getText());
+//    }
 
     @Test
     public void scopesIncludedInAuthorizeRequest() throws Exception {
